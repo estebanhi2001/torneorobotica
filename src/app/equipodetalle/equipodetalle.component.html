@@ -1,0 +1,135 @@
+<mat-accordion [multi]="true">
+    <button style="display: inline;" mat-button (click)="eq.a=eq.a-1; uv.update(eq)">-1</button>
+    <p style="display: inline;">Asistencia: {{eq.a}}</p>
+    <button style="display: inline;" mat-button (click)="eq.a=eq.a+1; uv.update(eq)">+1</button>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Ronda 1
+            </mat-panel-title>
+            <mat-panel-description>
+                {{eq.r[0].p.t}} Puntos
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <p>Mejor Hito: {{eq.r[0].h}} ({{eq.r[0].p.h}} Puntos)
+            <button mat-flat-button *ngIf="eq.r[0].h!=0" (click)="eq.r[0].h=eq.r[0].h-1; uv.update(eq)">-1</button>
+            <button mat-flat-button *ngIf="eq.r[0].hm" (click)="eq.r[0].h=eq.r[0].h+1; uv.update(eq)">+1</button>
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <p>Bonus: {{eq.r[0].b}} ({{eq.r[0].p.b}} Puntos)
+            <button mat-flat-button *ngIf="eq.r[0].b!=0" (click)="eq.r[0].b=eq.r[0].b-1; uv.update(eq)">-1</button>
+            <button mat-flat-button *ngIf="eq.r[0].b!=1" (click)="eq.r[0].b=eq.r[0].b+1; uv.update(eq)">+1</button>
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <p>Reinicios: {{eq.r[0].r}} ({{eq.r[0].p.r}} Puntos)
+            <button mat-flat-button (click)="eq.r[0].r=eq.r[0].r-1; uv.update(eq)">-1</button>
+            <button mat-flat-button (click)="eq.r[0].r=eq.r[0].r+1; uv.update(eq)">+1 </button>
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <p>Tiempo: {{eq.r[0].time | timer | async | date:'mm:ss'}}
+            <button mat-flat-button (click)="eq.r[0].time.i= uv.now(); uv.update(eq)">Start</button>
+            <button mat-flat-button (click)="eq.r[0].time.f= uv.now(); uv.update(eq)">Stop</button>
+            <button mat-flat-button (click)="uv.cleanTime(eq.r[0].time); uv.update(eq)">Clear</button>
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <p>Puntaje de ronda: {{eq.r[0].p.t}} Puntos</p>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Desafios
+            </mat-panel-title>
+            <mat-panel-description>{{eq.dt}}%</mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Desafios: {{eq.ds}}</p>
+
+        <p>Total desafios: {{eq.dt}}%</p>
+
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Ronda 2
+            </mat-panel-title>
+            <mat-panel-description>
+                {{eq.r[1].p.t}} Puntos
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <p>Mejor Hito: {{eq.r[1].h}} ({{eq.r[1].p.h}} Puntos)
+            <button mat-flat-button *ngIf="eq.r[1].h!=0" (click)="eq.r[1].h=eq.r[1].h-1; uv.update(eq)">-1</button>
+            <button mat-flat-button *ngIf="eq.r[1].hm" (click)="eq.r[1].h=eq.r[1].h+1; uv.update(eq)">+1</button>
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <p>Bonus: {{eq.r[1].b}} ({{eq.r[1].p.b}} Puntos)
+            <button mat-flat-button *ngIf="eq.r[1].b!=0" (click)="eq.r[1].b=eq.r[1].b-1; uv.update(eq)">-1</button>
+            <button mat-flat-button *ngIf="eq.r[1].b!=1" (click)="eq.r[1].b=eq.r[1].b+1; uv.update(eq)">+1</button>
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <p>Reinicios: {{eq.r[1].r}} ({{eq.r[1].p.r}} Puntos)
+            <button mat-flat-button (click)="eq.r[1].r=eq.r[1].r-1; uv.update(eq)">-1</button>
+            <button mat-flat-button (click)="eq.r[1].r=eq.r[1].r+1; uv.update(eq)">+1 </button>
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <p>Tiempo: {{eq.r[1].time | timer | async | date:'mm:ss'}}
+            <button mat-flat-button (click)="eq.r[1].time.i= uv.now(); uv.update(eq)">Start</button>
+            <button mat-flat-button (click)="eq.r[1].time.f= uv.now(); uv.update(eq)">Stop</button>
+            <button mat-flat-button (click)="uv.cleanTime(eq.r[1].time); uv.update(eq)">Clear</button>
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <p>Puntaje de ronda: {{eq.r[1].p.t}} Puntos</p>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Puntajes Finales
+            </mat-panel-title>
+            <mat-panel-description>
+                {{eq.t}} Puntos
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <p>Mejor Ronda Hitos: {{eq.mrh}} Puntos</p>
+
+
+        <p>% Rendimiento: {{eq.ren}}%</p>
+
+
+        <p>Puntaje desafios: {{eq.dt}}%</p>
+
+
+        <p>Puntaje ponderado express: {{eq.ppe}}</p>
+
+
+        <p>Ronda 1: {{eq.r[0].p.t}} Puntos</p>
+
+
+        <p>Ronda 2: {{eq.r[1].p.t}} Puntos</p>
+
+
+        <p>Puntaje Final: {{eq.t}} Puntos</p>
+
+
+
+    </mat-expansion-panel>
+</mat-accordion>

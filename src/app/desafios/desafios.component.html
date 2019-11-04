@@ -1,0 +1,43 @@
+<div class="example-header" fxLayout="row">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+    </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="eq">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Equipo </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Equipo:"> {{row.eq}} ({{row.es}}) </mat-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="ds">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Desafíos: </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Hitos:">
+                {{row.ds}}
+            </mat-cell>
+        </ng-container>
+
+
+        <!-- Color Column -->
+        <ng-container matColumnDef="dt">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Total Desafíos: </mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Reinicios:"> {{row.dt}}%</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="v">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row"><button mat-button routerLink="/equipo/{{row.eq}}">Ver más</button></mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row [ngClass]="{'ausente': row.a == 0, 'listo': row.dr == true }" *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+
+</div>

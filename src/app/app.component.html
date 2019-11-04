@@ -1,0 +1,29 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button id="buttonmenu" mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+        <h1 class="example-app-name">{{uv.titulo}}</h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item routerLink="/">Inicio</a>
+                <a mat-list-item routerLink="/ronda/1">Ronda 1</a>
+                <a mat-list-item routerLink="/desafios">Desafios</a>
+                <a mat-list-item routerLink="/ronda/2">Ronda 2</a>
+                <a mat-list-item routerLink="/puntajesfinales">Puntajes Finales</a>
+                <a mat-list-item routerLink="/envivo">En vivo</a>
+                <a mat-list-item routerLink="/admin">Inicio de seción</a>
+                <a mat-list-item routerLink="/print">Imprimir</a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <div class=containercontent>
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

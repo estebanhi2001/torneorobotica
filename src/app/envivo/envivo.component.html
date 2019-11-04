@@ -1,0 +1,27 @@
+<div class="column">
+    <div style="padding: 5px;">
+        <div>
+            <mat-form-field style="width:100%;">
+                <mat-label>Equipo:</mat-label>
+                <mat-select [(value)]="seq1" (selectionChange)="onChange()">
+                    <mat-option value="">--</mat-option>
+                    <mat-option *ngFor="let food of options" value="{{food}}">{{food}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <app-equipodetalle *ngIf="seq1!=''" [eq]="eq1"></app-equipodetalle>
+    </div>
+</div>
+<div class="column">
+    <div style="padding: 5px;">
+        <mat-form-field style="width: 100%;">
+            <mat-label>Equipo:</mat-label>
+            <mat-select [(value)]="seq2" (selectionChange)="onChange()">
+                <mat-option value="">--</mat-option>
+                <mat-option *ngFor="let food of options" value="{{food}}">{{food}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <app-equipodetalle *ngIf="seq2!=''" [eq]="eq2"></app-equipodetalle>
+    </div>
+</div>
